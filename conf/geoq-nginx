@@ -1,0 +1,25 @@
+# file: /etc/nginx/sites-available/yourdomain.com
+# nginx configuration for yourdomain.com
+
+#server {
+#        server_name 0.0.0.0;
+#        rewrite ^(.*) 0.0.0.0$1 permanent;
+#}
+
+server {
+        server_name ;
+        access_log /var/log/server/access.log;
+        error_log /var/log/server/error.log;
+
+        location / {
+                uwsgi_pass unix:/tmp/uwsgi.sock;
+                include /etc/nginx/uwsgi_params;
+        }
+
+        location /static {
+                root /home/ubuntu/static;
+        }
+        location /media {
+                root /home/ubuntu/media;
+        }
+}
