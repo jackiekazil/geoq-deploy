@@ -17,9 +17,9 @@ server {
         }
 
         location /static {
-                root /home/ubuntu/static;
+                root /home/ubuntu/;
         }
         location /media {
-                root /home/ubuntu/media;
+                root /home/ubuntu/;
         }
 }
