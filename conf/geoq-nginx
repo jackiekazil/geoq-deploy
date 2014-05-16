@@ -2,12 +2,12 @@
 # nginx configuration for yourdomain.com
 
 #server {
-#        server_name 0.0.0.0;
-#        rewrite ^(.*) 0.0.0.0$1 permanent;
+#        server_name ec2-96-127-49-225.us-gov-west-1.compute.amazonaws.com;
+#        rewrite ^(.*) ec2-96-127-49-225.us-gov-west-1.compute.amazonaws.com$1 permanent;
 #}
 
 server {
-        server_name ;
+        server_name geoq;
         access_log /var/log/server/access.log;
         error_log /var/log/server/error.log;
 
@@ -17,9 +17,20 @@ server {
         }
 
         location /static {
-                root /home/ubuntu/;
+                root /home/ubuntu;
         }
         location /media {
                 root /home/ubuntu/;
         }
-}
+
+	location /nginx_status {
+       		# Turn on nginx stats
+        	stub_status on;
+        	# I do not need logs for stats
+        	access_log   off;
+        	# Security: Only allow access from 192.168.1.100 IP #
+        	allow 192.168.1.100;
+        	# Send rest of the world to /dev/null #
+        	deny all;
+   	}
+}	
