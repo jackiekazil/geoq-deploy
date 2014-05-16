@@ -8,6 +8,6 @@ echo "DJANGO_SETTINGS_MODULE set to:" $DJANGO_SETTINGS_MODULE
 
 git pull origin
 paver sync
-django-admin.py collectstatic
+django-admin.py collectstatic --noinput
 bash /home/ubuntu/code/geoq-deploy/scripts/restart_geoq.sh
 
